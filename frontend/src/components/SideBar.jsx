@@ -83,16 +83,16 @@ const SideBar = () => {
           ) : null}
         </div>
         {/* ---Bottom--- */}
-        <div className="flex flex-col gap-y-3 w-full">
+        <div className="flex flex-col gap-y-3 ">
           {bottomSection.map((item) => (
             <div
               key={item.id}
-              className="flex items-center   hover:bg-[#e6eaf1]   py-2 pl-5   rounded-2xl cursor-pointer"
+              className="flex   hover:bg-[#e6eaf1] p-3 rounded-2xl cursor-pointer"
             >
               <img
                 src={item.imageLink}
                 alt={item.altImageLink}
-                className="w-6 h-6"
+                className="w-4 h-4 md:w-6 md:h-6"
               />
 
               {extended ? <p className="ml-3">{item.text}</p> : null}

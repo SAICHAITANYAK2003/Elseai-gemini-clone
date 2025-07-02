@@ -5,6 +5,7 @@ import Cards from "./Cards";
 import { assets } from "../assets/assets";
 import { AiContext } from "../context/AiContext";
 import toast from "react-hot-toast";
+import { useSpeechToText } from "../hooks/useSpeechToText";
 
 const HeroSection = () => {
   const {
@@ -17,7 +18,9 @@ const HeroSection = () => {
     loading,
     prevPrompts,
     updatesInfo,
+    addNewChat,
   } = useContext(AiContext);
+  const { startListening } = useSpeechToText(setInput);
 
   const onHandleInput = () => {
     if (input.length === 0) {
@@ -91,6 +94,17 @@ const HeroSection = () => {
           )}
 
           <div className="absolute bottom-1 md:bottom-4 w-[100%] max-w-[800px] z-40">
+            <button
+              onClick={addNewChat}
+              className="px-4 py-2 bg-[#f0f4f9] mb-2 rounded-2xl cursor-pointer hover:bg-[#dde1e6] md:hidden flex items-center"
+            >
+              <img
+                src={assets.plus_icon}
+                alt="plus-icons"
+                className="w-5 h-6"
+              />
+              <span className="ml-2 text-[13px]">New Chat</span>
+            </button>
             <div className="flex items-center justify-between bg-[#f0f4f9] px-8 py-5 rounded-2xl gap-3">
               <input
                 type="text"
@@ -108,7 +122,7 @@ const HeroSection = () => {
                   className="w-7 h-7 cursor-pointer"
                 />
                 <img
-                  onClick={() => updatesInfo()}
+                  onClick={startListening}
                   src={assets.mic_icon}
                   alt="mic-icon"
                   className="w-7 h-7 cursor-pointer"
