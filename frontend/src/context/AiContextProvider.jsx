@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AiContext } from "./AiContext";
 import main from "../config/gemini";
 import toast from "react-hot-toast";
@@ -43,11 +43,11 @@ const AiContextProvider = ({ children }) => {
     setInput("");
   };
 
-  const addNewChat = () =>{
-    setLoading(false)
-    setRecentPrompt("")
-    setShowResult(false)
-  }
+  const addNewChat = () => {
+    setLoading(false);
+    setRecentPrompt("");
+    setShowResult(false);
+  };
   const updatesInfo = () => {
     toast(
       <>

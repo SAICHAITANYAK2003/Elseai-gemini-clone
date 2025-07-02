@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="flex items-center justify-between pt-5 px-7 ">
+      <div className="flex items-center justify-between py-4 px-7 border-b border-b-gray-300/30">
         <h1 className="text-3xl text-gray-500/90">Else ai.</h1>
         <div className="flex items-center gap-10">
           <button

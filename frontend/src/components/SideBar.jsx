@@ -41,24 +41,23 @@ const SideBar = () => {
       <div
         className={`${
           extended ? "w-[13%]" : "w-[6%]"
-        } hidden md:flex flex-col items-start justify-between py-5 px-2  bg-[#f0f4f9]    `}
+        } hidden md:flex flex-col items-start justify-between py-5 px-2  bg-[#f0f4f9]     `}
       >
         {/* ---top--- */}
-        <div className="w-full">
+        <div className="w-full  ">
           <img
             src={assets.menu_icon}
             alt="menu-icon"
-            className="w-8 h-8 hover:bg-gray-300/40 rounded-md cursor-pointer"
+            className="w-10 h-10 p-2 hover:bg-gray-300/40  rounded-full cursor-pointer"
             onClick={onHandleView}
           />
 
-          <div className="flex items-center bg-[#e6eaf1]  mt-5  py-2 pl-2 rounded-2xl cursor-pointer">
+          <div
+            onClick={addNewChat}
+            className="flex items-center justify-center bg-[#e6eaf1] hover:bg-slate-300  mt-5  p-2 rounded-2xl cursor-pointer"
+          >
             <img src={assets.plus_icon} alt="plus-icon" className="w-5 h-7" />
-            {extended ? (
-              <p onClick={() => addNewChat} className="ml-2">
-                New Chat
-              </p>
-            ) : null}
+            {extended ? <p className="ml-2">New Chat</p> : null}
           </div>
 
           {/* -----recent-tabs------- */}
@@ -88,7 +87,7 @@ const SideBar = () => {
           {bottomSection.map((item) => (
             <div
               key={item.id}
-              className="flex items-center hover:bg-[#e6eaf1]  py-2 pl-2 rounded-2xl cursor-pointer"
+              className="flex items-center   hover:bg-[#e6eaf1]   py-2 pl-5   rounded-2xl cursor-pointer"
             >
               <img
                 src={item.imageLink}
