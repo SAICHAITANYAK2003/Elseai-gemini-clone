@@ -6,7 +6,7 @@ import { assets } from "../assets/assets";
 import { AiContext } from "../context/AiContext";
 import toast from "react-hot-toast";
 import { useSpeechToText } from "../hooks/useSpeechToText";
-import ListenerButton from "./listenerButton";
+import ListenerButton from "./ListenerButton.jsx";
 import { FaRegStopCircle } from "react-icons/fa";
 import { FaMicrophoneAlt } from "react-icons/fa";
 import { RiImageCircleFill, RiSendPlane2Fill } from "react-icons/ri";
@@ -108,7 +108,7 @@ const HeroSection = () => {
               onClick={addNewChat}
               className="px-4 py-2 bg-[#f0f4f9] mb-2 rounded-2xl cursor-pointer hover:bg-[#dde1e6] md:hidden flex items-center z-50"
             >
-              <IoIosAddCircle size={23}/>
+              <IoIosAddCircle size={23} />
               {/* <img
                 src={assets.plus_icon}
                 alt="plus-icons"
