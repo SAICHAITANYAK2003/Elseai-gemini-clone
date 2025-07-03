@@ -27,9 +27,10 @@ const AiContextProvider = ({ children }) => {
 
     let finalPrompt = prompt !== undefined ? prompt : input;
 
-    if (prompt === undefined) {
-      setRecentPrompt(finalPrompt);
-    }
+    // if (prompt === undefined) {
+    //   setRecentPrompt(finalPrompt);
+    // }
+    setRecentPrompt(finalPrompt);
 
     setPrevPrompts((prev) =>
       prev.includes(finalPrompt) ? prev : [...prev, finalPrompt]

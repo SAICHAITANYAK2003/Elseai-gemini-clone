@@ -13,7 +13,6 @@ import { RiImageCircleFill, RiSendPlane2Fill } from "react-icons/ri";
 import { IoIosAddCircle } from "react-icons/io";
 import HistoryContent from "./History.jsx";
 import HelpContent from "./Help.jsx";
-import { LuFileText } from "react-icons/lu";
 import { IoIosHelpCircle } from "react-icons/io";
 import { FaFileAlt } from "react-icons/fa";
 
@@ -90,7 +89,7 @@ const HeroSection = () => {
     <>
       <div className="flex-1 flex flex-col relative">
         <Navbar />
-        <div className="flex-1 flex flex-col items-center justify-center ">
+        <div className="flex flex-col items-center justify-center ">
           {showResult ? (
             onShowResultData()
           ) : (
