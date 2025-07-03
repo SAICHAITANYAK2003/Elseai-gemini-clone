@@ -1,22 +1,25 @@
-import  { useContext } from "react";
+import { useContext, useState } from "react";
 import { assets } from "../assets/assets";
 import toast from "react-hot-toast";
 import { AiContext } from "../context/AiContext";
+import ProfilePage from "./ProfilePage";
 
 const Navbar = () => {
   const { updatesInfo } = useContext(AiContext);
+  const [showProfile, setShowProfile] = useState(false);
   const onHandleFunc = () => {
-    toast("🚧  Under Developement  🚧", {
-      style: {
-        color: "red",
-        border: "1px solid red",
-      },
-    });
+    // toast("🚧  Under Developement  🚧", {
+    //   style: {
+    //     color: "red",
+    //     border: "1px solid red",
+    //   },
+    // });
+    setShowProfile((prev) => !prev);
   };
 
   return (
     <>
-      <div className="flex items-center justify-between py-4 px-7 border-b border-b-gray-300/30">
+      <div className="flex items-center justify-between py-4 px-7 border-b border-b-gray-300/30 relative">
         <h1 className="text-3xl text-gray-500/90">Else ai.</h1>
         <div className="flex items-center gap-10">
           <button
@@ -34,8 +37,18 @@ const Navbar = () => {
             onClick={onHandleFunc}
             src={assets.user_icon}
             alt="user-icon"
-            className="rounded-full h-10 w-10 cursor-pointer"
+            className="rounded-full h-10 w-10  cursor-pointer"
           />
+          {showProfile && (
+            <div className="absolute z-[9999] top-16 right-5 w-full max-w-[250px] rounded-2xl border-2 border-gray-300 bg-cover bg-center overflow-hidden bg-white ">
+              <img
+                src={assets.mountains}
+                alt="mountains-image"
+                className="object-center w-full h-32"
+              />
+              <ProfilePage />
+            </div>
+          )}
         </div>
       </div>
     </>

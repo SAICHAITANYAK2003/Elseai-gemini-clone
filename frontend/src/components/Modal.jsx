@@ -13,10 +13,11 @@ const customStyles = {
     left: "50%",
     right: "auto",
     bottom: "auto",
-    marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    height: "500px",
-    width: "500px",
+    width: "90%",
+    maxWidth: "500px",
+    height: "80%",
+    maxHeight: "500px",
     borderRadius: "30px",
   },
 };
@@ -38,12 +39,12 @@ const ReactModal = () => {
           onRequestClose={() => setModalState(false)}
         >
           <div>
-            <div className="flex flex-col items-end ">
+            <div className="flex-1 flex flex-col items-end  ">
               <button
                 onClick={() => setModalState(false)}
                 className="cursor-pointer"
               >
-                <IoIosCloseCircle size={30}   />
+                <IoIosCloseCircle size={30} />
               </button>
               <hr className="border-[0.9px] border-gray-300 w-full mt-2" />
             </div>

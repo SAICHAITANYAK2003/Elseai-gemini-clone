@@ -11,6 +11,11 @@ import { FaRegStopCircle } from "react-icons/fa";
 import { FaMicrophoneAlt } from "react-icons/fa";
 import { RiImageCircleFill, RiSendPlane2Fill } from "react-icons/ri";
 import { IoIosAddCircle } from "react-icons/io";
+import HistoryContent from "./History.jsx";
+import HelpContent from "./Help.jsx";
+import { LuFileText } from "react-icons/lu";
+import { IoIosHelpCircle } from "react-icons/io";
+import { FaFileAlt } from "react-icons/fa";
 
 const HeroSection = () => {
   const {
@@ -21,10 +26,11 @@ const HeroSection = () => {
     resultData,
     recentPrompt,
     loading,
-    prevPrompts,
     updatesInfo,
     addNewChat,
     isListening,
+    setModalContent,
+    setModalState,
   } = useContext(AiContext);
   const { startListening, stopListening } = useSpeechToText();
 
@@ -104,18 +110,40 @@ const HeroSection = () => {
           )}
 
           <div className="absolute bottom-1 md:bottom-4 w-[100%] max-w-[800px] z-40">
-            <button
-              onClick={addNewChat}
-              className="px-4 py-2 bg-[#f0f4f9] mb-2 rounded-2xl cursor-pointer hover:bg-[#dde1e6] md:hidden flex items-center z-50"
-            >
-              <IoIosAddCircle size={23} />
-              {/* <img
+            <div className="flex items-center space-x-2">
+              <button
+                onClick={addNewChat}
+                className="px-4 py-2 bg-[#f0f4f9] mb-2 rounded-2xl cursor-pointer hover:bg-[#dde1e6] md:hidden flex items-center z-50"
+              >
+                <IoIosAddCircle size={23} />
+                {/* <img
                 src={assets.plus_icon}
                 alt="plus-icons"
                 className="w-5 h-6"
               /> */}
-              <span className="ml-2 text-[13px]">New Chat</span>
-            </button>
+                <span className="ml-2 text-[13px]">New Chat</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setModalContent(<HistoryContent />), setModalState(true);
+                }}
+                className="px-4 py-2 bg-[#f0f4f9] mb-2 rounded-2xl cursor-pointer hover:bg-[#dde1e6] md:hidden flex items-center z-50"
+              >
+                <FaFileAlt size={23} />
+                <span className="ml-2 text-[13px]">History</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setModalContent(<HelpContent />), setModalState(true);
+                }}
+                className="px-4 py-2 bg-[#f0f4f9] mb-2 rounded-2xl cursor-pointer hover:bg-[#dde1e6] md:hidden flex items-center z-50"
+              >
+                <IoIosHelpCircle size={23} />
+                <span className="ml-2 text-[13px]">Help</span>
+              </button>
+            </div>
 
             <div className="flex items-center justify-between bg-[#f0f4f9] px-8 py-4 rounded-2xl gap-3">
               {isListening ? (

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { AiContext } from "../context/AiContext";
 import { IoIosCloseCircle } from "react-icons/io";
 
@@ -16,7 +16,7 @@ const HistoryContent = () => {
   );
 
   return (
-    <div className="p-1">
+    <div className="p-1 flex-1 ">
       <h2 className="text-2xl">History</h2>
       <input
         type="text"
