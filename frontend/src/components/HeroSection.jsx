@@ -6,6 +6,11 @@ import { assets } from "../assets/assets";
 import { AiContext } from "../context/AiContext";
 import toast from "react-hot-toast";
 import { useSpeechToText } from "../hooks/useSpeechToText";
+import ListenerButton from "./listenerButton";
+import { FaRegStopCircle } from "react-icons/fa";
+import { FaMicrophoneAlt } from "react-icons/fa";
+import { RiImageCircleFill, RiSendPlane2Fill } from "react-icons/ri";
+import { IoIosAddCircle } from "react-icons/io";
 
 const HeroSection = () => {
   const {
@@ -19,8 +24,9 @@ const HeroSection = () => {
     prevPrompts,
     updatesInfo,
     addNewChat,
+    isListening,
   } = useContext(AiContext);
-  const { startListening } = useSpeechToText(setInput);
+  const { startListening, stopListening } = useSpeechToText();
 
   const onHandleInput = () => {
     if (input.length === 0) {
@@ -32,7 +38,7 @@ const HeroSection = () => {
 
   const onShowResultData = () => {
     return (
-      <div className="flex flex-col gap-y-5 w-full h-full max-w-[700px] max-h-[600px] overflow-y-scroll pb-15">
+      <div className="flex flex-col gap-y-5 w-full h-full max-w-[700px] max-h-[600px] overflow-y-auto  pb-15 mb-10  ">
         {/* ---user-input-field----- */}
 
         <div className="flex items-center justify-end">
@@ -61,7 +67,11 @@ const HeroSection = () => {
               <span className="sr-only">Loading...</span>
             </div>
           ) : (
-            <div className="prose prose-slate max-w-none font-light text-[17px] mt-2">
+            <div
+              className="prose prose-slate max-w-[700px] text-[17px] leading-8 tracking-wide mt-4
+    prose-headings:font-semibold prose-p:font-normal prose-li:font-normal
+    prose-p:mb-4 prose-ul:pl-5 prose-li:mb-2"
+            >
               <ReactMarkdown>{resultData}</ReactMarkdown>
             </div>
           )}
@@ -96,43 +106,62 @@ const HeroSection = () => {
           <div className="absolute bottom-1 md:bottom-4 w-[100%] max-w-[800px] z-40">
             <button
               onClick={addNewChat}
-              className="px-4 py-2 bg-[#f0f4f9] mb-2 rounded-2xl cursor-pointer hover:bg-[#dde1e6] md:hidden flex items-center"
+              className="px-4 py-2 bg-[#f0f4f9] mb-2 rounded-2xl cursor-pointer hover:bg-[#dde1e6] md:hidden flex items-center z-50"
             >
-              <img
+              <IoIosAddCircle size={23}/>
+              {/* <img
                 src={assets.plus_icon}
                 alt="plus-icons"
                 className="w-5 h-6"
-              />
+              /> */}
               <span className="ml-2 text-[13px]">New Chat</span>
             </button>
-            <div className="flex items-center justify-between bg-[#f0f4f9] px-8 py-5 rounded-2xl gap-3">
-              <input
-                type="text"
-                placeholder="Enter a prompt here"
-                className="flex-1 outline-none border-none"
-                onChange={(e) => setInput(e.target.value)}
-                value={input}
-              />
 
-              <div className="flex items-center gap-4">
-                <img
-                  onClick={() => updatesInfo()}
-                  src={assets.gallery_icon}
-                  alt="gallery-icon"
-                  className="w-7 h-7 cursor-pointer"
+            <div className="flex items-center justify-between bg-[#f0f4f9] px-8 py-5 rounded-2xl gap-3">
+              {isListening ? (
+                <ListenerButton />
+              ) : (
+                <input
+                  type="text"
+                  placeholder="Enter a prompt here"
+                  className="flex-1 outline-none border-none"
+                  onChange={(e) => setInput(e.target.value)}
+                  value={input}
                 />
-                <img
-                  onClick={startListening}
-                  src={assets.mic_icon}
-                  alt="mic-icon"
-                  className="w-7 h-7 cursor-pointer"
-                />
-                <img
-                  src={assets.send_icon}
-                  alt="send-icon"
-                  className="w-7 h-7 cursor-pointer"
+              )}
+
+              <div className="flex items-center gap-4 ">
+                {isListening ? null : (
+                  <button
+                    onClick={() => updatesInfo()}
+                    className="cursor-pointer hover:bg-gray-200 rounded-md p-1.5"
+                  >
+                    <RiImageCircleFill size={28} />
+                  </button>
+                )}
+
+                {isListening ? (
+                  <button
+                    onClick={stopListening}
+                    className="cursor-pointer hover:bg-gray-200 rounded-md p-1.5"
+                  >
+                    <FaRegStopCircle size={28} />
+                  </button>
+                ) : (
+                  <button
+                    onClick={startListening}
+                    className="cursor-pointer hover:bg-gray-200 rounded-md p-1.5"
+                  >
+                    <FaMicrophoneAlt size={25} />
+                  </button>
+                )}
+
+                <button
                   onClick={() => onHandleInput()}
-                />
+                  className="cursor-pointer hover:bg-gray-200 rounded-md p-1.5"
+                >
+                  <RiSendPlane2Fill size={25} />
+                </button>
               </div>
             </div>
             <p className="text-center hidden md:block">

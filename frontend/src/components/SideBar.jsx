@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { assets } from "../assets/assets";
 import { AiContext } from "../context/AiContext";
+ 
 
 const bottomSection = [
   {
@@ -40,7 +41,7 @@ const SideBar = () => {
     <>
       <div
         className={`${
-          extended ? "w-[13%]" : "w-[6%]"
+          extended ? "md:w-[15%] lg:w-[13%]" : "w-[8%] lg:w-[6%]"
         } hidden md:flex flex-col items-start justify-between py-5 px-2  bg-[#f0f4f9]     `}
       >
         {/* ---top--- */}
@@ -99,6 +100,7 @@ const SideBar = () => {
             </div>
           ))}
         </div>
+        
       </div>
     </>
   );

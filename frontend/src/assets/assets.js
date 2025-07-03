@@ -31,3 +31,4 @@ export const assets = {
   send_icon,
   gemini_icon,
 };
+

@@ -13,7 +13,7 @@ async function main(prompt) {
   const config = {
     responseMimeType: "text/plain",
   };
-  const model = "learnlm-2.0-flash-experimental";
+  const model = "gemini-2.0-flash";
   const contents = [
     {
       role: "user",

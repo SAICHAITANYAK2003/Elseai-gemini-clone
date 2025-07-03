@@ -10,6 +10,7 @@ const AiContextProvider = ({ children }) => {
   const [showResult, setShowResult] = useState(false);
   const [loading, setLoading] = useState(false);
   const [resultData, setResultData] = useState("");
+  const [isListening, setIsListening] = useState(false);
 
   const delayPara = (index, nextWord) => {
     setTimeout(() => {
@@ -57,9 +58,7 @@ const AiContextProvider = ({ children }) => {
             <p className="border border-gray-200 px-2 py-2 rounded-2xl bg-gray-100">
               🖼️ Image Upload 📸
             </p>
-            <p className="border border-gray-200 px-2 py-2 rounded-2xl bg-gray-100">
-              🎙️ Voice Input 🎧
-            </p>
+             
           </div>
         </div>
       </>,
@@ -85,6 +84,8 @@ const AiContextProvider = ({ children }) => {
     onSent,
     updatesInfo,
     addNewChat,
+    isListening,
+    setIsListening,
   };
   return <AiContext.Provider value={value}>{children}</AiContext.Provider>;
 };

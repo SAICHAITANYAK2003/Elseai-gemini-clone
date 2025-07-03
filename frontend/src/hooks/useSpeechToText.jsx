@@ -1,7 +1,10 @@
-import { useCallback } from "react";
+import { useCallback, useContext, useRef } from "react";
 import toast from "react-hot-toast";
+import { AiContext } from "../context/AiContext";
 
-export function useSpeechToText(setInput) {
+export function useSpeechToText() {
+  const { setInput, setIsListening } = useContext(AiContext);
+  const recognitionRef = useRef(null);
   const startListening = useCallback(() => {
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -18,6 +21,17 @@ export function useSpeechToText(setInput) {
     const recognition = new SpeechRecognition();
     recognition.lang = "en-US";
 
+    recognition.onstart = () => {
+      console.log("🎤 Listening...");
+      setIsListening(true);
+    };
+    recognition.onspeechstart = () => console.log("🗣️ Speech has started");
+    recognition.onspeechend = () => console.log("🔇 Speech has ended");
+    recognition.onend = () => {
+      console.log("🛑 Stopped listening");
+      setIsListening(false);
+    };
+
     recognition.onresult = (event) => {
       const transcript = event.results[0][0].transcript;
       console.log("You said:", transcript);
@@ -31,10 +45,16 @@ export function useSpeechToText(setInput) {
           border: "1px solid red",
         },
       });
+      setIsListening(false);
     };
 
     recognition.start();
-  }, [setInput]);
+    recognitionRef.current = recognition;
+  }, [setInput, setIsListening]);
 
-  return { startListening };
+  const stopListening = useCallback(() => {
+    recognitionRef.current?.stop();
+  }, []);
+
+  return { startListening, stopListening };
 }
