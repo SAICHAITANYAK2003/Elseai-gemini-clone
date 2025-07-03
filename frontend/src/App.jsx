@@ -1,6 +1,7 @@
 import SideBar from "./components/SideBar";
 import HeroSection from "./components/HeroSection";
 import { Toaster } from "react-hot-toast";
+import ReactModal from "./components/Modal";
 
 const App = () => {
   return (
@@ -9,6 +10,7 @@ const App = () => {
         <Toaster position="top-center" reverseOrder={false} />
         <SideBar />
         <HeroSection />
+        <ReactModal />
       </div>
     </>
   );

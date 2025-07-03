@@ -5,12 +5,15 @@ import toast from "react-hot-toast";
 
 const AiContextProvider = ({ children }) => {
   const [input, setInput] = useState("");
+  const [extended, setExtended] = useState(false);
   const [recentPrompt, setRecentPrompt] = useState("");
   const [prevPrompts, setPrevPrompts] = useState([]);
   const [showResult, setShowResult] = useState(false);
   const [loading, setLoading] = useState(false);
   const [resultData, setResultData] = useState("");
   const [isListening, setIsListening] = useState(false);
+  const [modalState, setModalState] = useState(false);
+  const [modalContent, setModalContent] = useState("");
 
   const delayPara = (index, nextWord) => {
     setTimeout(() => {
@@ -58,7 +61,6 @@ const AiContextProvider = ({ children }) => {
             <p className="border border-gray-200 px-2 py-2 rounded-2xl bg-gray-100">
               🖼️ Image Upload 📸
             </p>
-             
           </div>
         </div>
       </>,
@@ -71,6 +73,8 @@ const AiContextProvider = ({ children }) => {
   const value = {
     input,
     setInput,
+    extended,
+    setExtended,
     recentPrompt,
     setRecentPrompt,
     prevPrompts,
@@ -86,6 +90,10 @@ const AiContextProvider = ({ children }) => {
     addNewChat,
     isListening,
     setIsListening,
+    modalContent,
+    setModalContent,
+    modalState,
+    setModalState,
   };
   return <AiContext.Provider value={value}>{children}</AiContext.Provider>;
 };

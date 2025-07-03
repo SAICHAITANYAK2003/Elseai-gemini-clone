@@ -34,7 +34,7 @@ async function main(prompt) {
   let fileIndex = "";
   for await (const chunk of response) {
     console.log(chunk.text);
-    fileIndex += chunk.text
+    fileIndex += chunk.text;
   }
 
   return fileIndex;

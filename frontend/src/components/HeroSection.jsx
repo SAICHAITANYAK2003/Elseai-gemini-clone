@@ -117,7 +117,7 @@ const HeroSection = () => {
               <span className="ml-2 text-[13px]">New Chat</span>
             </button>
 
-            <div className="flex items-center justify-between bg-[#f0f4f9] px-8 py-5 rounded-2xl gap-3">
+            <div className="flex items-center justify-between bg-[#f0f4f9] px-8 py-4 rounded-2xl gap-3">
               {isListening ? (
                 <ListenerButton />
               ) : (
