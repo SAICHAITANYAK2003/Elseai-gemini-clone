@@ -89,7 +89,7 @@ const HeroSection = () => {
     <>
       <div className="flex-1 flex flex-col relative">
         <Navbar />
-        <div className="flex flex-col items-center justify-center ">
+        <div className="flex flex-col flex-1 items-center justify-between ">
           {showResult ? (
             onShowResultData()
           ) : (
@@ -108,7 +108,7 @@ const HeroSection = () => {
             </>
           )}
 
-          <div className="absolute bottom-1 md:bottom-4 w-[100%] max-w-[800px] z-40">
+          <div className="w-full max-w-[800px] px-4 mb-2">
             <div className="flex items-center space-x-2">
               <button
                 onClick={addNewChat}
