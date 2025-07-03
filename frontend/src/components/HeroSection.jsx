@@ -89,7 +89,7 @@ const HeroSection = () => {
     <>
       <div className="flex-1 flex flex-col relative">
         <Navbar />
-        <div className="flex flex-col flex-1 items-center justify-between ">
+        <div className="flex-1 flex flex-col items-center justify-center ">
           {showResult ? (
             onShowResultData()
           ) : (
