@@ -74,8 +74,10 @@ const HeroSection = () => {
           ) : (
             <div
               className="prose prose-slate max-w-[700px] text-[17px] leading-8 tracking-wide mt-4
-    prose-headings:font-semibold prose-p:font-normal prose-li:font-normal
-    prose-p:mb-4 prose-ul:pl-5 prose-li:mb-2"
+prose-headings:font-semibold prose-p:font-normal prose-li:font-normal
+prose-p:mb-4 prose-ul:pl-5 prose-li:mb-2
+dark:text-white
+"
             >
               <ReactMarkdown>{resultData}</ReactMarkdown>
             </div>
@@ -144,14 +146,14 @@ const HeroSection = () => {
               </button>
             </div>
 
-            <div className="flex items-center justify-between bg-[#f0f4f9] px-8 py-4 rounded-2xl gap-3">
+            <div className="flex items-center justify-between bg-[#f0f4f9] px-8 py-4 rounded-2xl gap-3 dark:bg-black dark:border dark:border-gray-400">
               {isListening ? (
                 <ListenerButton />
               ) : (
                 <input
                   type="text"
                   placeholder="Enter a prompt here"
-                  className="flex-1 outline-none border-none"
+                  className="flex-1 outline-none border-none dark:text-white"
                   onChange={(e) => setInput(e.target.value)}
                   value={input}
                 />
@@ -161,7 +163,7 @@ const HeroSection = () => {
                 {isListening ? null : (
                   <button
                     onClick={() => updatesInfo()}
-                    className="cursor-pointer hover:bg-gray-200 rounded-md p-1.5"
+                    className="cursor-pointer hover:bg-gray-200 rounded-md p-1.5 dark:text-white dark:hover:bg-slate-700"
                   >
                     <RiImageCircleFill size={28} />
                   </button>
@@ -170,14 +172,14 @@ const HeroSection = () => {
                 {isListening ? (
                   <button
                     onClick={stopListening}
-                    className="cursor-pointer hover:bg-gray-200 rounded-md p-1.5"
+                    className="cursor-pointer hover:bg-gray-200 rounded-md p-1.5 dark:text-white dark:hover:bg-slate-700"
                   >
                     <FaRegStopCircle size={28} />
                   </button>
                 ) : (
                   <button
                     onClick={startListening}
-                    className="cursor-pointer hover:bg-gray-200 rounded-md p-1.5"
+                    className="cursor-pointer hover:bg-gray-200 rounded-md p-1.5 dark:text-white dark:hover:bg-slate-700"
                   >
                     <FaMicrophoneAlt size={25} />
                   </button>
@@ -185,7 +187,7 @@ const HeroSection = () => {
 
                 <button
                   onClick={() => onHandleInput()}
-                  className="cursor-pointer hover:bg-gray-200 rounded-md p-1.5"
+                  className="cursor-pointer hover:bg-gray-200 rounded-md p-1.5 dark:text-white dark:hover:bg-slate-700"
                 >
                   <RiSendPlane2Fill size={25} />
                 </button>

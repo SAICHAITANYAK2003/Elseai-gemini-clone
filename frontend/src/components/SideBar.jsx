@@ -3,6 +3,10 @@ import { assets } from "../assets/assets";
 import { AiContext } from "../context/AiContext";
 import HelpContent from "./Help.jsx";
 import HistoryContent from "./History.jsx";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { FaRegCircleQuestion } from "react-icons/fa6";
+import { MdHistory } from "react-icons/md";
+import { IoSettingsOutline } from "react-icons/io5";
 
 const SideBar = () => {
   const {
@@ -30,16 +34,16 @@ const SideBar = () => {
       <div
         className={`${
           extended ? "md:w-[15%] lg:w-[13%]" : "w-[8%] lg:w-[6%]"
-        } hidden md:flex flex-col items-start justify-between py-5 px-2 bg-[#f0f4f9]`}
+        } hidden md:flex flex-col items-start justify-between py-5 px-2 bg-[#f0f4f9] dark:bg-black dark:border-r dark:border-zinc-800`}
       >
         {/* ---top--- */}
         <div className="w-full">
-          <img
-            src={assets.menu_icon}
-            alt="menu-icon"
-            className="w-10 h-10 p-2 hover:bg-gray-300/40 rounded-full cursor-pointer"
+          <button
+            className="w-10 h-10 p-2 hover:bg-gray-300/40 rounded-full cursor-pointer dark:text-white  "
             onClick={onHandleView}
-          />
+          >
+            <RxHamburgerMenu size={25} />
+          </button>
 
           <div
             onClick={addNewChat}
@@ -52,7 +56,7 @@ const SideBar = () => {
           {/* -----recent-tabs------- */}
           {extended && (
             <div className="mt-10">
-              <p>Recent</p>
+              <p className="dark:text-white">Recent</p>
               {prevPrompts.map((item, index) => (
                 <div
                   key={index}
@@ -79,14 +83,12 @@ const SideBar = () => {
               setModalContent(<HelpContent />);
               setModalState(true);
             }}
-            className="flex hover:bg-[#e6eaf1] p-3 rounded-2xl cursor-pointer"
+            className="flex hover:bg-[#e6eaf1] p-3 rounded-2xl    dark:hover:bg-slate-700  "
           >
-            <img
-              src={assets.question_icon}
-              alt="question-icon"
-              className="w-4 h-4 md:w-6 md:h-6"
-            />
-            {extended && <p className="ml-3">Help</p>}
+            <button className="w-4 h-4 md:w-6 md:h-6 dark:text-white cursor-pointer ">
+              <FaRegCircleQuestion size={25} />
+            </button>
+            {extended && <p className="ml-3 dark:text-white">Help</p>}
           </div>
 
           {/* -----History-section------ */}
@@ -94,27 +96,24 @@ const SideBar = () => {
             onClick={() => {
               setModalContent(<HistoryContent />), setModalState(true);
             }}
-            className="flex hover:bg-[#e6eaf1] p-3 rounded-2xl cursor-pointer"
+            className="flex hover:bg-[#e6eaf1] p-3 rounded-2xl  dark:hover:bg-slate-700 cursor-pointer"
           >
-            <img
-              src={assets.history_icon}
-              alt="history-icon"
-              className="w-4 h-4 md:w-6 md:h-6"
-            />
-            {extended && <p className="ml-3">History</p>}
+            <button className="w-4 h-4 md:w-6 md:h-6 dark:text-white cursor-pointer ">
+              <MdHistory size={25} />
+            </button>
+
+            {extended && <p className="ml-3 dark:text-white">History</p>}
           </div>
 
           {/* -----Setting-section------ */}
           <div
             onClick={() => setModalState((prev) => !prev)}
-            className="flex hover:bg-[#e6eaf1] p-3 rounded-2xl cursor-pointer"
+            className="flex hover:bg-[#e6eaf1] p-3 rounded-2xl  dark:hover:bg-slate-700 cursor-pointer"
           >
-            <img
-              src={assets.setting_icon}
-              alt="setting-icon"
-              className="w-4 h-4 md:w-6 md:h-6"
-            />
-            {extended && <p className="ml-3">Settings</p>}
+            <button className="w-4 h-4 md:w-6 md:h-6 dark:text-white cursor-pointer ">
+              <IoSettingsOutline size={25} />
+            </button>
+            {extended && <p className="ml-3 dark:text-white">Settings</p>}
           </div>
         </div>
       </div>

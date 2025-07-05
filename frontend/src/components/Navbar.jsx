@@ -3,10 +3,20 @@ import { assets } from "../assets/assets";
 import toast from "react-hot-toast";
 import { AiContext } from "../context/AiContext";
 import ProfilePage from "./ProfilePage";
+import { GoArrowRight } from "react-icons/go";
+import { FaRegCircleQuestion } from "react-icons/fa6";
+import { LuSun } from "react-icons/lu";
+import { IoMoon } from "react-icons/io5";
 
 const Navbar = () => {
-  const { updatesInfo } = useContext(AiContext);
-  const [showProfile, setShowProfile] = useState(false);
+  const {
+    updatesInfo,
+    showProfile,
+    setShowProfile,
+    onHandleTheme,
+    toggleTheme,
+  } = useContext(AiContext);
+
   const onHandleFunc = () => {
     // toast("🚧  Under Developement  🚧", {
     //   style: {
@@ -19,19 +29,35 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="flex items-center justify-between py-4 px-7 border-b border-b-gray-300/30 relative">
-        <h1 className="text-3xl text-gray-500/90">Else ai.</h1>
-        <div className="flex items-center gap-10">
-          <button
-            onClick={() => updatesInfo()}
-            className="relative px-4 py-2  cursor-pointer "
-          >
-            Updates
-            <span className="absolute top-0 right-0 left-20 flex h-3 w-5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
-              <span className="relative inline-flex h-4 w-4 rounded-full bg-sky-500"></span>
-            </span>
+      <div className="flex items-center justify-between py-4 px-7 border-b border-b-gray-300/30 relative dark:border-0">
+        <h1 className="text-3xl text-gray-500/90 dark:text-white">Else ai.</h1>
+        <div className="flex items-center gap-5">
+          {/* -------dark-theme------- */}
+
+          <button onClick={onHandleTheme} className="p-1.5 dark:text-white dark:bg-slate-700 bg-gray-200 cursor-pointer rounded-full">
+            {toggleTheme === "" && <IoMoon size={25} />}
+            {toggleTheme === "dark" && <LuSun size={25}   />}
           </button>
+
+          <div
+            onClick={() => updatesInfo()}
+            className="hidden  md:flex items-center space-x-2 border border-blue-500/30 rounded-full bg-blue-500/20 p-1 text-sm text-blue-600 cursor-pointer"
+          >
+            <div className="flex items-center space-x-1 bg-blue-500 text-white border border-blue-500 rounded-2xl px-3 py-1">
+              <p> Future Updates</p>
+
+              <GoArrowRight size={20} />
+            </div>
+          </div>
+
+          <div
+            onClick={() => updatesInfo()}
+            className="flex items-center md:hidden space-x-2 border border-blue-500/30 rounded-full bg-blue-500/20 p-1 text-sm text-blue-600 cursor-pointer"
+          >
+            <div className=" flex items-center space-x-1 bg-blue-500 text-white border border-blue-500 rounded-2xl px-3 py-1">
+              <FaRegCircleQuestion />
+            </div>
+          </div>
 
           <img
             onClick={onHandleFunc}

@@ -17,7 +17,7 @@ const cardContent = [
     id: 3,
     cardInfo: "Brainstorm team bonding activities for our work retreat",
     cardIcon: assets.message_icon,
-    mobileCardInfo: "Relaxed / Social",
+    mobileCardInfo: "Activities",
   },
   {
     id: 4,
@@ -30,16 +30,16 @@ const cardContent = [
 const Cards = () => {
   return (
     <>
-      <div className="grid grid-cols-2   lg:grid-cols-4 justify-center gap-10 p-3 mt-5  ">
+      <div className="grid grid-cols-2   lg:grid-cols-4 justify-center gap-10 p-3 mt-5   ">
         {cardContent.map((card) => (
           <div
             key={card.id}
-            className="md:w-[240px] p-3 flex items-center justify-between bg-[#f0f4f9] rounded-2xl cursor-pointer hover:shadow-md"
+            className="md:w-[240px] p-3 flex items-center justify-between bg-[#f0f4f9] rounded-2xl cursor-pointer hover:shadow-md dark:bg-gray-800 dark:border dark:border-gray-500 "
           >
-            <p className="text-[#585858] text-[15px] hidden md:block">
+            <p className="text-[#585858] text-[15px] hidden md:block dark:text-gray-300/80">
               {card.cardInfo}
             </p>
-            <p className="text-[#585858] text-[15px] block md:hidden">
+            <p className="text-[#585858] text-[15px] block md:hidden dark:text-gray-300/80">
               {card.mobileCardInfo}
             </p>
             <img

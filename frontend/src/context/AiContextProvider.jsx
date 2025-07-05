@@ -14,6 +14,12 @@ const AiContextProvider = ({ children }) => {
   const [isListening, setIsListening] = useState(false);
   const [modalState, setModalState] = useState(false);
   const [modalContent, setModalContent] = useState("");
+  const [showProfile, setShowProfile] = useState(false);
+  const [toggleTheme, setToggleTheme] = useState("");
+
+  const onHandleTheme = () => {
+    setToggleTheme((prev) => (prev === "dark" ? "" : "dark"));
+  };
 
   const delayPara = (index, nextWord) => {
     setTimeout(() => {
@@ -95,6 +101,11 @@ const AiContextProvider = ({ children }) => {
     setModalContent,
     modalState,
     setModalState,
+    showProfile,
+    setShowProfile,
+    onHandleTheme,
+    toggleTheme,
+    setToggleTheme,
   };
   return <AiContext.Provider value={value}>{children}</AiContext.Provider>;
 };
