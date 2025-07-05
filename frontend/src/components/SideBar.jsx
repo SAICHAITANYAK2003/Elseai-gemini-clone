@@ -7,6 +7,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { FaRegCircleQuestion } from "react-icons/fa6";
 import { MdHistory } from "react-icons/md";
 import { IoSettingsOutline } from "react-icons/io5";
+import { BsChatSquare } from "react-icons/bs";
 
 const SideBar = () => {
   const {
@@ -61,14 +62,11 @@ const SideBar = () => {
                 <div
                   key={index}
                   onClick={() => loadPrompt(item)}
-                  className="flex items-center hover:bg-[#e6eaf1] mt-3 py-1.5 pl-2 rounded-md cursor-pointer"
+                  className="flex items-center hover:bg-[#e6eaf1] mt-3 py-1.5 pl-2 rounded-md cursor-pointer dark:hover:bg-gray-800 "
                 >
-                  <img
-                    src={assets.message_icon}
-                    alt="message-icon"
-                    className="w-6 h-6"
-                  />
-                  <p className="pl-2">{item.slice(0, 15)}...</p>
+                  <BsChatSquare className="dark:text-white" />
+
+                  <p className="pl-2 dark:text-white">{item.slice(0, 15)}...</p>
                 </div>
               ))}
             </div>
@@ -106,7 +104,7 @@ const SideBar = () => {
           </div>
 
           {/* -----Setting-section------ */}
-          <div
+          {/* <div
             onClick={() => setModalState((prev) => !prev)}
             className="flex hover:bg-[#e6eaf1] p-3 rounded-2xl  dark:hover:bg-slate-700 cursor-pointer"
           >
@@ -114,7 +112,7 @@ const SideBar = () => {
               <IoSettingsOutline size={25} />
             </button>
             {extended && <p className="ml-3 dark:text-white">Settings</p>}
-          </div>
+          </div> */}
         </div>
       </div>
     </>
