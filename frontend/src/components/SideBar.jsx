@@ -84,7 +84,7 @@ const SideBar = () => {
             className="flex hover:bg-[#e6eaf1] p-3 rounded-2xl    dark:hover:bg-slate-700  "
           >
             <button className="w-4 h-4 md:w-6 md:h-6 dark:text-white cursor-pointer ">
-              <FaRegCircleQuestion size={25} />
+              <FaRegCircleQuestion size={23} />
             </button>
             {extended && <p className="ml-3 dark:text-white">Help</p>}
           </div>
